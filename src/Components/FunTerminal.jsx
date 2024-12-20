@@ -85,21 +85,41 @@ const FunTerminal = () => {
     play: playMusic,
     pause: pauseMusic,
 
-    blog: () => "You can find my blog at: https://medium.com/@shubham_0101",
+    blog: () => "You can find my blog at: https://medium.com/@shubham.csecs",
 
     whoami: () => (
       <pre>{`
 ╔═══════════════════════════════════════════════════╗
 ║                  Hello World !!                   ║
-║  I am Shubham Raj, a web developer                ║
-║  with expertise in front-end.                     ║
-║  I like identifying vulnerabilities and helping   ║
-║  organizations reinforce their defenses.          ║
+║  I am Shubham, a web developer                    ║
+║  with expertise in Full-Stack development.        ║
+║  I love design and code beautifully simple things.║
 ╚═══════════════════════════════════════════════════╝`}</pre>
     ),
 
     social: () => (
-      <pre>{socialLinks.map((link) => `- ${link}`).join("\n")}</pre>
+      <pre>
+        {socialLinks.map((link, index) => (
+          <React.Fragment key={index}>
+            -{" "}
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: "#66ff00",
+                textDecoration: "underline",
+                transition: "color 0.3s ease, text-decoration 0.3s ease",
+              }}
+              onMouseEnter={(e) => (e.target.style.color = "#ff6600")}
+              onMouseLeave={(e) => (e.target.style.color = "#66ff00")}
+            >
+              {link}
+            </a>
+            <br />
+          </React.Fragment>
+        ))}
+      </pre>
     ),
 
     clear: () => {
@@ -113,14 +133,28 @@ const FunTerminal = () => {
     },
   };
 
-  const welcomeMessage = `Type 'help' to see the list of available commands.`;
+  const terminalPrompt = (
+    <pre>
+      ┌──(Root㉿Raj)-[~]
+      <br />
+      └─$
+    </pre>
+  );
 
-  //   window.onload = function() {
-  //     document.getElementById("terminalEditor").style.backgroundColor = "black";
-  //     document.getElementById("terminalEditor").style.color = "#66ff00";
+  const currentDate = new Date().toLocaleDateString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
 
-  //     document.getElementsByClassName("index_terminal__teubZ")[0].style.backgroundColor = "#1a1a1a";
-  //   };
+  const welcomeMessage = (
+    <pre>
+      <div className="text-white text-center">{currentDate}</div>
+      {`\nType 'help' to list commands.`}
+         
+    </pre>
+  );
 
   return (
     <div
@@ -132,27 +166,64 @@ const FunTerminal = () => {
         alignItems: "center",
       }}
     >
+      {/* for big screens */}
       <div
         style={{
           borderRadius: "10px",
-          width: "80%",
-          maxWidth: "800px",
-          height: "70vh",
+          width: "60vw",
+          height: "75vh",
           overflowY: "auto",
         }}
+        className="hidden lg:block"
       >
         <ReactTerminal
           welcomeMessage={welcomeMessage}
           commands={commands}
           onChange={setOutput}
-          prompt={`\n ┌──(root㉿Raj)-[~]#`}
+          prompt={terminalPrompt}
           output={output}
           themes={{
             "my-custom-theme": {
               themeBGColor: "#0D1017",
               themeToolbarColor: "#1E222A",
               themeColor: "#66ff00",
-              themePromptColor: "#1f75fe",
+              themePromptColor: "red",
+            },
+          }}
+          theme="my-custom-theme"
+          style={{
+            backgroundColor: "#1a1a1a",
+            color: "#fff",
+            fontSize: "16px",
+            fontFamily: "'Courier New', Courier, monospace",
+          }}
+        />
+        {/* Hidden audio element for music playback */}
+        <audio ref={audioRef} src={music} />
+      </div>
+
+      {/* for small screens */}
+      <div
+        style={{
+          borderRadius: "10px",
+          width: "85vw",
+          height: "75vh",
+          overflowY: "auto",
+        }}
+        className="lg:hidden "
+      >
+        <ReactTerminal
+          welcomeMessage={welcomeMessage}
+          commands={commands}
+          onChange={setOutput}
+          prompt={terminalPrompt}
+          output={output}
+          themes={{
+            "my-custom-theme": {
+              themeBGColor: "#0D1017",
+              themeToolbarColor: "#1E222A",
+              themeColor: "#66ff00",
+              themePromptColor: "red",
             },
           }}
           theme="my-custom-theme"

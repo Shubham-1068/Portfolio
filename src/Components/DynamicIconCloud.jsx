@@ -47,36 +47,56 @@ const DynamicIconCloud = () => {
     <img src={python} alt="Python Icon" className="w-12 h-12 object-contain" />,
   ];
 
-  if (!icons || icons.length === 0) {
-    return <div>No icons available</div>;
-  }
+  const tags = [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Node.js',
+    'MongoDB',
+    'Express.js',
+    'Postman',
+    'Tailwind CSS',
+    'VSCode',
+    'Linux',
+    'Git',
+    'GitHub',
+    'Docker',
+  ];
 
   return (
     <>
       <div id="skills" className="h-24"></div>
 
       <div className="w-full flex flex-col items-center">
-        <p className="text-4xl text-white text-center font-semibold">Tech Stack</p>
+        <p className="lg:text-4xl text-3xl text-white text-center font-semibold">Tech Stack</p>
 
-        <Cloud
-          keepStatic={true}
-          autoRotate={true}
-          initialSpeed={0.05}
-          maxSpeed={0.2}
-          shape="sphere"
-        >
-          {icons.map((icon, index) => (
-            <a
-              key={index}
-              href="#"
-              onClick={(e) => e.preventDefault()}
-              className="inline-block"
-            >
-              {icon}
-            </a>
+        {/* Cloud component with Tailwind CSS for scaling */}
+        <div className="transform scale-75"> {/* scale-75 shrinks the cloud */}
+          <Cloud
+            keepStatic={true}
+            autoRotate={true}
+            initialSpeed={0.05}
+            maxSpeed={0.2}
+            shape="sphere"
+          >
+            {icons.map((icon, index) => (
+              <a key={index} href="#" onClick={(e) => e.preventDefault()} className="inline-block">
+                {icon}
+              </a>
+            ))}
+          </Cloud>
+        </div>
+
+        {/* Tags */}
+        <div className="w-[80%] max-w-[700px] flex justify-center items-center flex-wrap gap-4">
+          {tags.map((tag, index) => (
+            <div key={index} className="bg-slate-800 hover:bg-[#2ba7dc] text-white px-2 py-1 text-[12px] md:text-sm font-semibold rounded-lg cursor-pointer">{tag}</div>
           ))}
-        </Cloud>
+        </div>
       </div>
+      <div className="my-20 w-[80%] max-w-[600px] justify-self-center"></div>
     </>
   );
 };

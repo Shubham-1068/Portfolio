@@ -29,3 +29,16 @@ figure{
   transform: rotateZ(180deg) scale(250%);
   filter: contrast(150%);
 }
+
+.popin {
+  animation: popin 0.5s ease-in-out;
+}
+
+@keyframes popin {
+  from {
+    transform: translate(-100%);
+  }
+  to {
+    transform: translate(0%);
+  }
+}

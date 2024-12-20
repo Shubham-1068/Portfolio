@@ -1,13 +1,18 @@
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import profilePicture from "../assets/images/profilePic.jpg";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter, HamIcon } from "lucide-react";
+import Dropdown from "./Dropdown";
 
 function Navbar() {
+
+  const [drop, setDrop] = useState(false)
+
   return (
     <>
-      <div className="fixed top-0 mb-16 w-screen h-16 bg-[#040711] flex items-center justify-around font-semibold z-30">
-        <div className="w-1/3 rounded-md flex items-center gap-2">
+      <div className="fixed top-0 mb-16 w-screen h-16 bg-[#040711] flex items-center justify-around font-semibold z-30 cursor-default">
+        <div className="lg:w-1/3 rounded-md flex items-center gap-2">
           <img
             src={profilePicture}
             alt="profilePicture"
@@ -16,8 +21,12 @@ function Navbar() {
           <p className="text-white">Shubham Raj</p>
         </div>
 
-        <div className="absolute z-0 w-full flex justify-center items-center gap-8 text-white">
-          <span className="hover:bg-slate-900 hover:text-[#38bdf8] p-2 hover:rounded-lg" onClick={() => window.scrollTo(0, 0)}>
+        {/* for big screens */}
+        <div className="absolute z-0 w-full justify-center items-center gap-8 text-white hidden lg:flex">
+          <span
+            className="hover:bg-slate-900 hover:text-[#38bdf8] p-2 hover:rounded-lg"
+            onClick={() => window.scrollTo(0, 0)}
+          >
             <Link to={"/"}>Home</Link>
           </span>
           <a
@@ -32,19 +41,24 @@ function Navbar() {
           >
             Projects
           </a>
-          <span
-            className="hover:bg-slate-900 hover:text-[#38bdf8] p-2 hover:rounded-lg"
-          >
-            <Link to={'/blogs'}>Blogs</Link>
+          <span className="hover:bg-slate-900 hover:text-[#38bdf8] p-2 hover:rounded-lg">
+            <Link to={"/blogs"}>Blogs</Link>
           </span>
-          <span
-            className="hover:bg-slate-900 hover:text-[#38bdf8] p-2 hover:rounded-lg"
-          >
-            <Link to={'/terminal'}>Terminal</Link>
+          <span className="hover:bg-slate-900 hover:text-[#38bdf8] p-2 hover:rounded-lg">
+            <Link to={"/terminal"}>Terminal</Link>
           </span>
         </div>
 
-        <div className="relative z-10 w-1/6 flex justify-center gap-6 items-center">
+        {/* for mobile screens */}
+        <div className="absolute z-0 w-full justify-center items-center gap-8 text-white flex lg:hidden">
+          {drop ? <Dropdown setDrop={setDrop} /> : null}
+        </div>
+
+        <div className="cursor-pointer relative z-20 lg:hidden" onClick={()=>{setDrop(!drop)}}>
+          <HamIcon size={24} color="white" />
+        </div>
+
+        <div className="relative z-10 w-1/6 lg:flex justify-center gap-6 items-center hidden">
           <a href="https://github.com/Shubham-1068" target="_blank">
             <Github color="white" size={20} />
           </a>
