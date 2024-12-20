@@ -6,7 +6,7 @@ function Blogs() {
   return (
     <>
       <div className="relative h-24 flex justify-center items-center cursor-default">
-        <Link to="/" className="absolute my-auto left-7"><ChevronsLeft size={32} color="white" /></Link>
+        <Link to="/" className="absolute my-auto left-7 hover:bg-slate-900 p-2 rounded-full flex justify-center items-center"><ChevronsLeft size={32} color="white" /></Link>
         <div className="text-white text-4xl font-semibold">Blogs</div>
       </div>
 

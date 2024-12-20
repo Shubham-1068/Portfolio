@@ -53,24 +53,30 @@ const DynamicIconCloud = () => {
 
   return (
     <>
-    <div id="skills" className="h-24"></div>
+      <div id="skills" className="h-24"></div>
 
-    <div className="w-full flex flex-col items-center">
-      <p className="text-4xl text-white text-center font-semibold">Tech Stack</p>
+      <div className="w-full flex flex-col items-center">
+        <p className="text-4xl text-white text-center font-semibold">Tech Stack</p>
 
-      <Cloud>
-        {icons.map((icon, index) => (
-          <a
-            key={index}
-            href="#"
-            onClick={(e) => e.preventDefault()}
-            className="inline-block"
-          >
-            {icon}
-          </a>
-        ))}
-      </Cloud>
-    </div>
+        <Cloud
+          keepStatic={true}
+          autoRotate={true}
+          initialSpeed={0.05}
+          maxSpeed={0.2}
+          shape="sphere"
+        >
+          {icons.map((icon, index) => (
+            <a
+              key={index}
+              href="#"
+              onClick={(e) => e.preventDefault()}
+              className="inline-block"
+            >
+              {icon}
+            </a>
+          ))}
+        </Cloud>
+      </div>
     </>
   );
 };

@@ -4,8 +4,8 @@ import Heros from "./Components/Heros";
 import Projects from "./Components/Projects";
 import DynamicIconCloud from "./Components/DynamicIconCloud";
 import Footer from "./Components/Footer";
-import Terminal from "./Components/Terminal";
 import Blogs from "./Components/Blogs";
+import TerminalSection from "./Components/TerminalSection";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
@@ -26,7 +26,12 @@ function App() {
       path: "/terminal",
       element: (
         <>
-          <Terminal />
+          <Navbar />
+          <Heros />
+          <Projects />
+          <DynamicIconCloud />
+          <Footer />
+          <TerminalSection />
         </>
       ),
     },

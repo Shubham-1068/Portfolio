@@ -24,3 +24,8 @@ figure{
   background: linear-gradient(to right, #131313, #2f2f2f); 
 
 }
+
+.rotate-y-180 {
+  transform: rotateZ(180deg) scale(250%);
+  filter: contrast(150%);
+}
