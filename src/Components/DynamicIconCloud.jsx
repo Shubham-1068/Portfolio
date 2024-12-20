@@ -18,7 +18,8 @@ import github from '../assets/images/github.png';
 import express from '../assets/images/express.png';
 import figma from '../assets/images/figma.png';
 import linux from '../assets/images/linux.png';
-import vercel from '../assets/images/vercel.png';
+import vercelImg from '../assets/images/vercel.png';
+
 import vscode from '../assets/images/vscode.png';
 import tailwind from '../assets/images/tailwind.png';
 import postman from '../assets/images/postman.png';
@@ -39,7 +40,7 @@ const DynamicIconCloud = () => {
     <img src={react} alt="React Icon" className="w-12 h-12 object-contain" />,
     <img src={tailwind} alt="Tailwind CSS Icon" className="w-12 h-12 object-contain" />,
     <img src={typescript} alt="TypeScript Icon" className="w-12 h-12 object-contain" />,
-    <img src={vercel} alt="Vercel Icon" className="w-12 h-12 object-contain" />,
+    <img src={vercelImg} alt="Vercel Icon" className="w-12 h-12 object-contain" />,
     <img src={vscode} alt="VSCode Icon" className="w-12 h-12 object-contain" />,
     <img src={c} alt="C Language Icon" className="w-12 h-12 object-contain" />,
     <img src={css} alt="CSS Icon" className="w-12 h-12 object-contain" />,
