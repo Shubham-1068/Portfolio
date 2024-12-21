@@ -128,8 +128,8 @@ const FunTerminal = () => {
     },
 
     exit: () => {
-      window.location.href = "https://x.com/ShubhamRaj69561";
-      return "Redirecting to my Twitter...";
+      window.location.href = "/";
+      return "Redirecting to Homepage...";
     },
   };
 
