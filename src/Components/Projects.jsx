@@ -32,7 +32,7 @@ export default function Projects() {
 
     <div className="relative lg:w-[75vw] w-[90vw] mx-auto border-0 overflow-hidden rounded-2xl">
 
-        <p className="lg:text-4xl text-3xl text-white text-center font-semibold">My Projects</p>
+        <p className="lg:text-4xl text-3xl text-white text-center font-semibold audiowide-regular">My Projects</p>
 
         <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background md:shadow-xl text-white">
       <Marquee pauseOnHover className="[--duration:20s]">

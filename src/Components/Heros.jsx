@@ -1,98 +1,161 @@
 import React from "react";
+import { Github, Mail, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import profilePicture from "../assets/images/profilePic.jpg";
-import { Github, Mail } from "lucide-react";
+import profilePic from "../assets/images/profilePic.jpg"; // Ensure the profilePic is properly imported
+import profilePicBack from "../assets/images/profilePicBack.jpg"; // Add your second image
 
-function Heros() {
-  // Stagger Animation for Text Lines
-  const textVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: { delay: 0.4 + i * 0.2, duration: 0.8 },
-    }),
-  };
+const Hero = () => {
+  const gradientTextClass =
+    "bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300";
 
   return (
-    <motion.div
-      id="home"
-      className="w-screen h-[750px] bg-[#09090b] flex items-center justify-center gap-12 text-[#5e5e73] flex-col audiowide-regular cursor-default"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+    <div className="min-h-screen text-white flex flex-col items-center justify-center relative overflow-hidden px-4 audiowide-regular">
+      {/* Background Animation */}
+      <motion.div
+        className="absolute inset-0 w-full h-full"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      </motion.div>
+
+      {/* Content Container */}
+      <motion.div
+        className="relative z-10 max-w-4xl w-full space-y-16"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
+      >
+        {/* Profile Section */}
+        <motion.div
+          className="text-center space-y-8"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          {/* Profile Image with Spinning Effect */}
+          <motion.div
+            className="relative group bottom-2"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
+          >
+            <div className="absolute -inset-0.5 rounded-full opacity-75 group-hover:opacity-100 transition duration-500 blur"></div>
+
+            <div className="relative h-40 w-40 lg:h-56 lg:w-56 mx-auto rounded-full overflow-hidden border-4 border-white/10 transform transition-transform duration-700 group-hover:rotate-[360deg]">
+              <div className="absolute inset-0 transition-opacity duration-500 group-hover:opacity-0">
+                <img
+                  src={profilePic}
+                  alt="Front"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute inset-0 transition-opacity duration-500 opacity-0 group-hover:opacity-100">
+                <img
+                  src={profilePicBack}
+                  alt="Back"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Main Text */}
+          <motion.div
+            className="space-y-7 cursor-default"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.7 }}
+          >
+            <motion.h1
+      className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#38bdf1] leading-tight"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      {/* Animated Profile Picture */}
-      <motion.div
-        className="lg:h-[200px] lg:w-[200px] h-[150px] w-[150px] rounded-full flex items-center justify-center overflow-hidden border-4 border-[#38bdf8] shadow-lg"
-        whileHover={{ rotate: 360, scale: 1.1 }}
-        animate={{ scale: [1, 1.05, 1], transition: { duration: 2, repeat: Infinity } }}
-      >
-        <motion.img
-          src={profilePicture}
-          alt="Profilepic"
-          className="h-full w-full"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 100, duration: 1 }}
-        />
+      <span className="">HEY👋, I AM SHUBHAM</span>
+    </motion.h1>
+          </motion.div>
+
+          {/* Description with Animations */}
+          <motion.div
+            className="space-y-5 text-gray-400 cursor-default w-[95%] mx-auto"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.9 }}
+          >
+            <motion.p
+              className="text-xs sm:text-sm md:text-base lg:text-lg"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+            >
+              I design elegant, simple solutions and love what I do
+            </motion.p>
+
+            <motion.p
+              className="text-xs sm:text-sm md:text-base lg:text-lg"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 1.2 }}
+            >
+              I create clean designs and code, driven by passion
+            </motion.p>
+
+            <motion.p
+              className="text-xs sm:text-sm md:text-base lg:text-lg"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 1.4 }}
+            >
+              I build responsive front-end apps with back-end integration
+            </motion.p>
+          </motion.div>
+        </motion.div>
+
+        {/* Contact Links */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.2 }}
+        >
+          <a
+            href="mailto:shubhamraj1068@gmail.com"
+            className="group flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300"
+          >
+            <Mail className="w-5 h-5 text-blue-400" />
+            <span className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 group-hover:text-white transition-colors">
+              shubhamraj1068@gmail.com
+            </span>
+          </a>
+
+          <a
+            href="https://github.com/Shubham-1068"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300"
+          >
+            <Github className="w-5 h-5 text-blue-400" />
+            <span className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 group-hover:text-white transition-colors">
+              Shubham-1068
+            </span>
+          </a>
+        </motion.div>
       </motion.div>
 
-      {/* Animated Text Section */}
-      <div className="flex flex-col text-center gap-4 text-sm w-[80vw]">
-        {[
-          "HEY👋, I AM SHUBHAM RAJ",
-          "I design and code beautifully simple things, and I love what I do.",
-          "I'm a front-end developer specializing in building exceptional digital experiences.",
-          "I'm focused on building responsive front-end web applications integrating back-end technologies.",
-        ].map((line, index) => (
-          <motion.p
-            key={index}
-            className={`lg:text-lg font-medium ${
-              index === 0 ? "text-[#38bdf8] lg:text-2xl font-bold mb-6" : ""
-            }`}
-            variants={textVariants}
-            initial="hidden"
-            animate="visible"
-            custom={index}
-            whileHover={{ scale: 1.05, color: "#38bdf8" }}
-          >
-            {line}
-          </motion.p>
-        ))}
-      </div>
-
-      {/* Animated Contact Links */}
+      {/* Scroll Indicator */}
       <motion.div
-        className="lg:w-full lg:p-0 p-3 flex justify-center gap-10 items-center border-2 border-slate-500 rounded-3xl lg:border-0"
+        className="absolute bottom-8 left-0 -translate-x-1/2 w-full flex justify-center items-center"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
       >
-        <motion.div
-          className="flex items-center gap-2"
-          whileHover={{ scale: 1.2, y: -5 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a href="mailto:shubhamraj1068@gmail.com" target="_blank" rel="noopener noreferrer">
-            <Mail color="white" size={28} />
-          </a>
-          <p className="hidden lg:block text-white">shubhamraj1068@gmail.com</p>
-        </motion.div>
-
-        <motion.div
-          className="flex items-center gap-2"
-          whileHover={{ scale: 1.2, y: -5 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a href="https://github.com/Shubham-1068" target="_blank" rel="noopener noreferrer">
-            <Github color="white" size={28} />
-          </a>
-          <p className="hidden lg:block text-white">shubhamraj1068</p>
-        </motion.div>
+        <ChevronDown className="w-6 h-6 text-gray-400 animate-bounce" />
       </motion.div>
-    </motion.div>
+    </div>
   );
-}
+};
 
-export default Heros;
+export default Hero;

@@ -71,7 +71,7 @@ const DynamicIconCloud = () => {
       <div id="skills" className="h-24"></div>
 
       <div className="w-full flex flex-col items-center">
-        <p className="lg:text-4xl text-3xl text-white text-center font-semibold">Tech Stack</p>
+        <p className="lg:text-4xl text-3xl text-white text-center font-semibold audiowide-regular">Tech Stack</p>
 
         {/* Cloud component with Tailwind CSS for scaling */}
         <div className="transform scale-75"> {/* scale-75 shrinks the cloud */}
