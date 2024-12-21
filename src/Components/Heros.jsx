@@ -1,8 +1,9 @@
 import React from "react";
-import { Github, Mail, ChevronDown } from "lucide-react";
+import { Github, Mail, ChevronDown, FileText } from "lucide-react";
 import { motion } from "framer-motion";
-import profilePic from "../assets/images/profilePic.jpg"; // Ensure the profilePic is properly imported
-import profilePicBack from "../assets/images/profilePicBack.jpg"; // Add your second image
+import profilePic from "../assets/images/profilePic.jpg";
+import profilePicBack from "../assets/images/profilePicBack.jpg";
+import Resume from "../assets/Resume.pdf";
 
 const Hero = () => {
   const gradientTextClass =
@@ -132,14 +133,15 @@ const Hero = () => {
           </a>
 
           <a
-            href="https://github.com/Shubham-1068"
+            href={Resume}
             target="_blank"
+            download={true}
             rel="noopener noreferrer"
             className="group flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 transition-all duration-300"
           >
-            <Github className="w-5 h-5 text-blue-400" />
+            <FileText className="w-5 h-5 text-blue-400" />
             <span className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 group-hover:text-white transition-colors">
-              Shubham-1068
+              My Resume
             </span>
           </a>
         </motion.div>
