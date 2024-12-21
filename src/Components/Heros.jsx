@@ -9,7 +9,7 @@ const Hero = () => {
     "bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300";
 
   return (
-    <div className="min-h-screen text-white flex flex-col items-center justify-center relative overflow-hidden px-4 audiowide-regular">
+    <div className="lg:mt-4 min-h-screen text-white flex flex-col items-center justify-center relative overflow-hidden px-4 audiowide-regular">
       {/* Background Animation */}
       <motion.div
         className="absolute inset-0 w-full h-full"
